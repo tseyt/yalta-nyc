@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yalta NYC - Crimean Tatar Cuisine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212; /* Rich Black */
+            color: #E0E0E0; /* Light Gray for general text */
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #1A1A1A; /* Slightly lighter black for content background */
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.1); /* Subtle gold glow */
+        }
+        .menu-header h1 {
+            color: #DAA520; /* Goldenrod - for a gold-like color */
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            /* Örnek pattern could be a subtle background texture or border for this element */
+        }
+        .menu-header .tagline {
+            color: #B8860B; /* DarkGoldenrod */
+            text-align: center;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .menu-header .philosophy {
+            color: #COCOCO; /* Silver for a slightly different highlight */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            border-top: 1px solid #DAA520; /* Golden line */
+            border-bottom: 1px solid #DAA520; /* Golden line */
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .section-title {
+            color: #DAA520;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            /* Örnek pattern could be used as an underline or side flourish */
+        }
+        .section-subtitle {
+            color: #B8860B;
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .menu-category {
+            margin-bottom: 40px;
+            /* Örnek pattern could be a border around each category or a dividing line */
+        }
+        .menu-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #444444; /* Darker separator */
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .item-image {
+            width: 150px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            border: 2px solid #DAA520; /* Golden border for images */
+        }
+        .item-details {
+            flex: 1;
+        }
+        .item-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #F5F5F5; /* Brighter white for item names */
+            margin-bottom: 5px;
+        }
+        .item-name .crimean-name {
+            font-size: 0.8em;
+            color: #B8860B;
+            font-style: italic;
+            margin-left: 8px;
+        }
+        .item-description {
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: #BDBDBD; /* Lighter gray for descriptions */
+        }
+        .item-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #DAA520;
+            margin-left: auto; /* Pushes price to the right on larger screens */
+            padding-left: 15px; /* Space before price */
+        }
+        .item-options {
+            font-size: 0.85em;
+            color: #A0A0A0;
+            width: 100%; /* Make options take full width below description */
+            margin-top: 5px;
+        }
+        .dietary-info {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #B8860B;
+        }
+        .footer-info {
+            text-align: center;
+            font-size: 0.9em;
+            color: #A0A0A0;
+        }
+        .ornament-divider {
+            text-align: center;
+            color: #DAA520;
+            font-size: 1.5em;
+            margin: 30px 0;
+            /* This could be replaced with an actual Örnek graphic line */
+        }
+
+        @media (max-width: 600px) {
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .item-image {
+                width: 100%;
+                height: 200px; /* Adjust for better mobile view */
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .item-price {
+                margin-left: 0;
+                padding-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                text-align: left;
+            }
+            .menu-header h1 {
+                font-size: 2.5em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <header class="menu-header">
+            <h1>YALTA NYC</h1>
+            <p class="tagline">An Exquisite Journey into Crimean Tatar Cuisine</p>
+            <div class="ornament-divider">⚜ ⚜ ⚜</div>
+            <p class="philosophy">
+                At Yalta NYC, we present the refined culinary traditions of the Crimean Peninsula. Each dish is a testament to a rich heritage where Eastern European, Turkic, and Mediterranean essences converge. We are dedicated to authentic flavors, premium ingredients, and the art of Crimean Tatar hospitality, delivered with elegance to your New York City home.
+            </p>
+        </header>
+
+        <section id="mezze">
+            <h2 class="section-title">MEZZE</h2>
+            <p class="section-subtitle">(Artisanal Starters & Sharable Delights)</p>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Cheburek" alt="Cheburek Selection" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Cheburek Selection <span class="crimean-name">(Чиберек)</span></h3>
+                        <p class="item-description">Hand-crafted, golden-fried turnovers, a Crimean delicacy.</p>
+                        <p class="item-options">Classic Lamb: Finely minced seasoned lamb & sweet onion. - $7.50 (1 pc)</p>
+                        <p class="item-options">Forest Mushroom & Potato (V): Wild mushrooms, creamy potatoes, and fresh herbs. - $6.50 (1 pc)</p>
+                        <p class="item-options">Aged Feta & Dill (V): Imported feta cheese with fragrant dill. - $7.00 (1 pc)</p>
+                        <p class="item-options"><em>Artisan's Trio (One of each Cheburek)</em></p>
+                    </div>
+                    <span class="item-price">$19.50</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Yantiq" alt="Yantiq Duet" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Yantiq Duet <span class="crimean-name">(Янтыкъ)</span></h3>
+                        <p class="item-description">A refined, grilled rendition of the Cheburek, lightly brushed with clarified butter.</p>
+                        <p class="item-options">Smoked Beef & Caramelized Onion: Tender smoked beef with sweet, slow-cooked onions. - $8.00 (1 pc)</p>
+                        <p class="item-options">Spinach & Queso Fresco (V): Sautéed garden spinach with a delicate fresh cheese. - $7.50 (1 pc)</p>
+                        <p class="item-options"><em>Recommended Pairing (One of each Yantiq)</em></p>
+                    </div>
+                    <span class="item-price">$15.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Sarma" alt="Sarma Signature" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Sarma Signature <span class="crimean-name">(Сарма)</span> (GF)</h3>
+                        <p class="item-description">Tender vine leaves, meticulously hand-rolled with aromatic rice, select herbs.</p>
+                        <p class="item-options">Prime Ground Lamb: (5 pieces) - $12.00</p>
+                        <p class="item-options">Toasted Walnut & Lentil (VG): (5 pieces) - $11.00</p>
+                    </div>
+                    </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Baqla+Ezmesi" alt="Baqla Ezmesi Royale" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Baqla Ezmesi Royale <span class="crimean-name">(Бакъла Эзмеси)</span> (VG, GF)</h3>
+                        <p class="item-description">Velvety fava bean purée, enhanced with roasted garlic, fresh lemon, dill, and extra virgin olive oil. Accompanied by warm, artisanal Pite bread or crisp cucumber medallions.</p>
+                    </div>
+                    <span class="item-price">$10.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Pite+Bread" alt="Artisanal Pite Bread" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Artisanal Pite Bread <span class="crimean-name">(Пите)</span> (V)</h3>
+                        <p class="item-description">Traditional soft, slightly leavened Crimean Tatar flatbread, baked fresh to order. An essential accompaniment.</p>
+                    </div>
+                    <span class="item-price">$4.50</span>
+                </div>
+            </div>
+        </section>
+        <div class="ornament-divider">⚜ ⚜ ⚜</div>
+
+        <section id="sorbalar">
+            <h2 class="section-title">ŞORBALAR</h2>
+            <p class="section-subtitle">(Rich & Restorative Soups)</p>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Surpa" alt="Şurpa" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Şurpa <span class="crimean-name">(Шурпа)</span> (GF)</h3>
+                        <p class="item-description">A clear, nourishing broth simmered with tender lamb (or beef), root vegetables, and fresh herbs. A timeless Crimean restorative.</p>
+                        <p class="item-options">*Available with chicken upon request.</p>
+                    </div>
+                    <span class="item-price">$12.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Lagman" alt="Lagman Signature" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Lagman Signature <span class="crimean-name">(Лагъман)</span></h3>
+                        <p class="item-description">A robust and aromatic soup featuring slow-braised lamb, seasonal garden vegetables, and hand-pulled noodles, subtly infused with star anise and traditional spices. A truly satisfying repast.</p>
+                        <p class="item-options">*Vegetarian Lagman (V) available, featuring a medley of forest mushrooms and hearty root vegetables. - $14.00</p>
+                    </div>
+                    <span class="item-price">$16.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Toyga+Sorbasi" alt="Toyga Şorbası" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Toyga Şorbası <span class="crimean-name">(Crimean Wedding Soup)</span> (V)</h3>
+                        <p class="item-description">A delicate, creamy yogurt and pearl wheat berry soup, enlivened with fresh mint. A unique and comforting tradition.</p>
+                    </div>
+                    <span class="item-price">$9.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Baqla+Ash" alt="Baqla Ash" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Baqla Ash <span class="crimean-name">(Бакъла Аш)</span> (VG, GF)</h3>
+                        <p class="item-description">Traditional green pea or fava bean potage, slow-simmered with carrots, sweet onions, and fine herbs. Wholesome and deeply flavorful.</p>
+                    </div>
+                    <span class="item-price">$9.00</span>
+                </div>
+            </div>
+        </section>
+        <div class="ornament-divider">⚜ ⚜ ⚜</div>
+
+        <section id="ana-yemekler">
+            <h2 class="section-title">ANA YEMEKLER</h2>
+            <p class="section-subtitle">(Signature Main Courses from the Crimean Hearth)</p>
+
+            <h3 class="text-xl font-semibold text-[#B8860B] mt-6 mb-4 text-center">From the Grill & Tandoor:</h3>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Shashlik" alt="Crimean Shashlik Grand" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Crimean Shashlik Grand <span class="crimean-name">(Шышлыкъ)</span> (GF)</h3>
+                        <p class="item-description">Choice cuts, marinated in traditional herbs and spices, then grilled over open flames for an authentic smoky essence. Served with charred Pite, pickled crimson onions, and a zesty tomato-herb relish.</p>
+                        <p class="item-options">Prime Lamb Loin Shashlik: - $24.00</p>
+                        <p class="item-options">Free-Range Chicken Thigh Shashlik: Marinated in a kefir-spice blend. - $21.00</p>
+                        <p class="item-options">Grilled Orchard Vegetable Medley (VG): Seasonal bounty from the garden, herb marinade. - $18.00</p>
+                    </div>
+                     </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Samsa" alt="Tandoor Samsa" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Tandoor Samsa <span class="crimean-name">(Тандыр Самса)</span></h3>
+                        <p class="item-description">Exquisite, flaky triangular pastries, baked to a golden hue in our tandoor-style oven.</p>
+                        <p class="item-options">Spiced Lamb & Onion Confit: - $7.00 ea</p>
+                        <p class="item-options">Roasted Butternut Squash & Sage (V): - $6.50 ea</p>
+                    </div>
+                    </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-[#B8860B] mt-10 mb-4 text-center">Dumplings & Traditional Pasta:</h3>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Manty" alt="Manty Signature" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Manty Signature <span class="crimean-name">(Манты)</span></h3>
+                        <p class="item-description">Delicate, hand-crafted steamed dumplings, presented with a choice of traditional accompaniments: rich garlic yogurt (Sarımsaqlı Qatıq) or a vibrant, house-made spicy tomato compote.</p>
+                        <p class="item-options">Seasoned Ground Lamb & Onion: (6 large pieces) - $19.00</p>
+                        <p class="item-options">Autumn Pumpkin & Nutmeg (V): (6 large pieces) - $17.00</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Tataras" alt="Tataraş" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Tataraş <span class="crimean-name">(Crimean Pelimeni / Татараш)</span></h3>
+                        <p class="item-description">Petite, tender boiled dumplings filled with seasoned minced meat (traditionally lamb or beef), served either in a clear, savory broth with a dollop of smetana (sour cream) or lightly tossed with butter and fresh dill.</p>
+                        <p class="item-options">*Vegetarian version with potato and mushroom filling available upon request. - $16.00</p>
+                    </div>
+                    <span class="item-price">$18.00</span>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-[#B8860B] mt-10 mb-4 text-center">Slow-Cooked & Baked Signatures:</h3>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Plov" alt="Crimean Plov 'Yalta'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Crimean Plov "Yalta" <span class="crimean-name">(Плов)</span></h3>
+                        <p class="item-description">Our signature rice pilaf, slow-cooked to perfection with your choice of tender lamb or chicken, sweet carrots, Vidalia onions, select chickpeas, and a proprietary blend of Crimean spices, highlighted by fragrant barberries.</p>
+                        <p class="item-options">With Lamb: $22.00</p>
+                        <p class="item-options">With Chicken: $20.00</p>
+                        <p class="item-options">Wild Mushroom & Dried Apricot Plov (VG, GF): Aromatic Basmati rice with a medley of wild mushrooms, sweet dried apricots, and toasted pistachios. - $18.00</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Kobete" alt="Köbete Royale" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Köbete Royale <span class="crimean-name">(Кӧбете)</span> - Grand Savory Pie</h3>
+                        <p class="item-description">A majestic traditional layered pie, featuring a sumptuous filling encased in flaky pastry, baked to a rich golden-brown.</p>
+                        <p class="item-options">Free-Range Chicken, Wild Rice & Potato Confit: (Generous Slice) - $19.50</p>
+                        <p class="item-options">Forest Mushroom & Caramelized Leek (V): (Generous Slice) - $18.50</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="ornament-divider">⚜ ⚜ ⚜</div>
+
+        <section id="salatalar-garnirler">
+            <h2 class="section-title">SALATALAR & GARNIRLER</h2>
+            <p class="section-subtitle">(Fresh Salads & Exquisite Accompaniments)</p>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Achichuk+Salad" alt="Achichuk Salad 'Riviera'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Achichuk Salad "Riviera" <span class="crimean-name">(Ачичук Салаты)</span> (VG, GF)</h3>
+                        <p class="item-description">Wafer-thin slices of heirloom tomatoes, sweet red onions, and mild chili, dressed with fresh cilantro and a whisper of lime. The quintessential partner to Plov and grilled meats.</p>
+                    </div>
+                    <span class="item-price">$8.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Vinegret" alt="Vinegret 'Crimean Garden'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Vinegret "Crimean Garden" <span class="crimean-name">(Винегрет)</span> (VG, GF)</h3>
+                        <p class="item-description">A vibrant mosaic of tender beets, heritage potatoes, sweet carrots, crisp cornichons, and green peas, delicately dressed with a sunflower oil vinaigrette.</p>
+                    </div>
+                    <span class="item-price">$9.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Garlic+Yogurt" alt="Sarımsaqlı Qatıq" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Sarımsaqlı Qatıq <span class="crimean-name">(Сырымсакълы Къатыкъ)</span> (V, GF)</h3>
+                        <p class="item-description">House-made creamy garlic yogurt, infused with fresh dill and a touch of sea salt.</p>
+                    </div>
+                    <span class="item-price">$5.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Pickled+Veg" alt="Assorted Pickled Garden Vegetables" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Assorted Pickled Garden Vegetables <span class="crimean-name">(Тузьлукълар)</span> (VG, GF)</h3>
+                        <p class="item-description">A delightful selection of crisp, house-pickled seasonal vegetables.</p>
+                    </div>
+                    <span class="item-price">$6.00</span>
+                </div>
+            </div>
+        </section>
+        <div class="ornament-divider">⚜ ⚜ ⚜</div>
+
+        <section id="tatlilar">
+            <h2 class="section-title">TATLILAR</h2>
+            <p class="section-subtitle">(Artisanal Desserts & Sweet Indulgences)</p>
+            <div class="menu-category">
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Pakhlava" alt="Pakhlava 'Golden Crimea'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Pakhlava "Golden Crimea" <span class="crimean-name">(Пахлава)</span> (V)</h3>
+                        <p class="item-description">Our exquisite Crimean-style baklava: delicate, paper-thin layers of pastry embracing finely chopped walnuts, all bathed in a fragrant, sun-kissed honey-lemon elixir.</p>
+                        <p class="item-options">(2 generous pieces)</p>
+                    </div>
+                    <span class="item-price">$9.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Sheker+Qiyiqs" alt="Sheker Qiyiqs 'Diamond Dust'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Sheker Qiyiqs "Diamond Dust" <span class="crimean-name">(Шекер Къыйыкълары)</span> (V)</h3>
+                        <p class="item-description">"Sugar Cuttings" - Delightfully crisp, diamond-shaped fried pastries, lightly dusted with fine powdered sugar. An ethereal treat.</p>
+                    </div>
+                    <span class="item-price">$8.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Qurabiye" alt="Qurabiye 'Yalta Blossom'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Qurabiye "Yalta Blossom" <span class="crimean-name">(Къурабие)</span> (V)</h3>
+                        <p class="item-description">Traditional Crimean Tatar shortbread biscuits, exceptionally crumbly and subtly perfumed with vanilla bean or delicate rosewater.</p>
+                        <p class="item-options">(3 pieces)</p>
+                    </div>
+                    <span class="item-price">$7.00</span>
+                </div>
+            </div>
+        </section>
+        <div class="ornament-divider">⚜ ⚜ ⚜</div>
+
+        <section id="ickiler">
+            <h2 class="section-title">İÇKİLER</h2>
+            <p class="section-subtitle">(Refreshing Beverages)</p>
+            <div class="menu-category">
+                <div class="menu-item">
+                     <img src="https://placehold.co/300x240/DAA520/121212?text=Ayran" alt="Ayran" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Ayran <span class="crimean-name">(Айран)</span></h3>
+                        <p class="item-description">Traditional refreshing savory yogurt beverage, lightly salted.</p>
+                    </div>
+                    <span class="item-price">$4.50</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Herbal+Tea" alt="Crimean Mountain Herbal Infusion" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Crimean Mountain Herbal Infusion <span class="crimean-name">(Къырым Чайы)</span></h3>
+                        <p class="item-description">A proprietary blend of wild aromatic herbs sourced from the Crimean highlands (featuring notes of thyme, lemon balm, and wild mint). Served hot or elegantly iced.</p>
+                    </div>
+                    <span class="item-price">$4.00</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Uzvar" alt="Uzvar 'Orchard Nectar'" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Uzvar "Orchard Nectar" <span class="crimean-name">(Узвар)</span> (VG)</h3>
+                        <p class="item-description">A traditional chilled compote of select dried fruits (Crimean apples, wild pears, sweet prunes, and tart cherries), naturally sweetened and deeply refreshing.</p>
+                    </div>
+                    <span class="item-price">$4.50</span>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://placehold.co/300x240/DAA520/121212?text=Sodas+%26+Water" alt="Sodas & Water" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Artisanal Sodas & Premium Bottled Waters</h3>
+                    </div>
+                    <span class="item-price">$3.00 - $5.00</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-[#DAA520]">
+            <p class="dietary-info">
+                (V) Vegetarian | (VG) Vegan | (GF) Gluten-Free <br>
+                We kindly request you inform us of any allergies or dietary sensitivities when placing your esteemed order. <br> While we exercise utmost care, we cannot guarantee items are entirely free of trace allergens.
+            </p>
+            <p class="footer-info">
+                Experience Yalta NYC: Order through [Your Delivery Platform Links Here]!<br>
+                Follow our culinary journey on Instagram @YaltaNYC
+            </p>
+            </footer>
+    </div>
+</body>
+</html>
